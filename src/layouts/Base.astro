@@ -15,7 +15,9 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description, path = Astro.url.pathname, noindex = false } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
+// Static builds report paths like /post-frame.html; links and canonical URLs use /post-frame.
+const path = (Astro.props.path ?? Astro.url.pathname).replace(/\.html$/, '').replace(/\/index$/, '/') || '/';
 const fullTitle = path === '/' ? `${site.name} | Post Frame Buildings, Decks and Custom Homes in Southeast Nebraska` : `${title} | ${site.name}`;
 const canonical = new URL(path, Astro.site).toString();
 const ogImage = new URL('/brand/logo-black.png', Astro.site).toString();
