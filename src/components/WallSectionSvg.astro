@@ -1,0 +1,50 @@
+---
+/** Cutaway of an Ebbers post frame wall, pier to roof. Numbers match the parts list on the post frame page. */
+const marks = [
+  { n: 1, x: 252, y: 480, lx1: 239, ly1: 480, lx2: 220, ly2: 480 },
+  { n: 2, x: 232, y: 404, lx1: 219, ly1: 404, lx2: 192, ly2: 404 },
+  { n: 3, x: 232, y: 290, lx1: 219, ly1: 290, lx2: 194, ly2: 290 },
+  { n: 4, x: 112, y: 250, lx1: 125, ly1: 250, lx2: 156, ly2: 250 },
+  { n: 5, x: 112, y: 412, lx1: 125, ly1: 412, lx2: 148, ly2: 412 },
+  { n: 6, x: 370, y: 188, lx1: 370, ly1: 175, lx2: 370, ly2: 164 },
+  { n: 7, x: 340, y: 58, lx1: 340, ly1: 71, lx2: 340, ly2: 98 },
+  { n: 8, x: 66, y: 196, lx1: 78, ly1: 188, lx2: 100, ly2: 176 },
+];
+const girts = [180, 228, 276, 324, 372];
+// Purlin centers, sitting on the top chord.
+const purlins = [{ x: 236, y: 128 }, { x: 316, y: 108 }, { x: 396, y: 88 }, { x: 476, y: 68 }];
+---
+<svg viewBox="0 0 600 520" role="img" aria-labelledby="wall-title" fill="none" stroke="#1d1f1b" stroke-width="1.5" stroke-linejoin="round">
+  <title id="wall-title">Cutaway of an Ebbers post frame wall from the concrete pier up to the roof, with eight numbered parts</title>
+  <!-- ground and pier -->
+  <path d="M20 430H590" stroke-width="1" />
+  <path d="M20 438l12-8M44 438l12-8M68 438l12-8M92 438l12-8M116 438l12-8M236 438l12-8M260 438l12-8" stroke="#6b6e66" stroke-width="1" />
+  <rect x="140" y="430" width="80" height="78" fill="#d6d3ca" />
+  <path d="M150 450l10 10M170 470l10 10M190 446l10 10M160 490l10 10M196 482l10 10" stroke="#6b6e66" stroke-width="1" />
+  <!-- bracket and post -->
+  <rect x="168" y="404" width="24" height="30" fill="#6b6e66" />
+  <rect x="166" y="160" width="28" height="244" fill="#e8dcc4" />
+  <path d="M175 160V404M185 160V404" stroke="#b9a57f" stroke-width="1" />
+  <!-- grade board, girts, wall steel -->
+  <rect x="148" y="396" width="18" height="34" fill="#a9b79f" />
+  {girts.map((y) => <rect x="156" y={y} width="10" height="12" fill="#e8dcc4" />)}
+  <path d="M150 166V396" stroke="#4e6446" stroke-width="3" />
+  <!-- floor slab -->
+  <rect x="194" y="418" width="396" height="12" fill="#d6d3ca" stroke-width="1" />
+  <!-- truss -->
+  <path d="M166 160H580" stroke-width="8" stroke="#c9b48a" />
+  <path d="M100 175L580 54" stroke-width="8" stroke="#c9b48a" />
+  <path d="M300 160L340 108M420 160L420 79M420 160L500 74" stroke="#c9b48a" stroke-width="5" />
+  {purlins.map((p) => <rect x={p.x - 4} y={p.y - 6} width="8" height="12" fill="#e8dcc4" transform={`rotate(-14 ${p.x} ${p.y})`} />)}
+  <!-- roof steel and soffit -->
+  <path d="M96 166L580 44" stroke="#4e6446" stroke-width="3" />
+  <path d="M100 175H150" stroke="#4e6446" stroke-width="2" />
+  <!-- callouts -->
+  {marks.map((m) => (
+    <g>
+      <path d={`M${m.lx1} ${m.ly1}L${m.lx2} ${m.ly2}`} stroke="#1d1f1b" stroke-width="1" />
+      <circle cx={m.x} cy={m.y} r="13" fill="#1d1f1b" stroke="none" />
+      <text x={m.x} y={m.y + 5} text-anchor="middle" fill="#fff" stroke="none" font-size="13" font-weight="500" font-family="var(--mono)">{m.n}</text>
+    </g>
+  ))}
+</svg>

@@ -1,0 +1,110 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import SectionDrawing from '../components/SectionDrawing.astro';
+import WallSectionSvg from '../components/WallSectionSvg.astro';
+import Photo from '../components/Photo.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { postFrameParts, postFrameExtras, pierReasons, postFrameOptions, steelColors } from '../data/build';
+---
+<Base
+  title="Post Frame Buildings"
+  description="How Ebbers Construction builds post frame shops, garages and pole barns in Southeast Nebraska: concrete piers, 3-ply columns, a truss at every post, Frontier G-Rib steel and a full blueprint set."
+>
+  <PageIntro eyebrow="Post frame buildings" title="Here's exactly how we build your shop.">
+    <p>Every Ebbers post frame building gets the same standards, whatever its size. Below is what's in the walls, under the posts and up in the roof, and the options you can add.</p>
+    <div class="btn-row">
+      <a href="/design" class="btn btn-primary">Design yours in 3D</a>
+      <a href="/start?service=post-frame" class="btn btn-outline">Start your project</a>
+    </div>
+  </PageIntro>
+
+  <section class="wrap" aria-labelledby="section-title">
+    <h2 id="section-title" class="sr-only">Wall section, part by part</h2>
+    <SectionDrawing label="WALL SECTION · NOT TO SCALE" parts={postFrameParts}>
+      <WallSectionSvg />
+    </SectionDrawing>
+  </section>
+
+  <section class="wrap section split split-top">
+    <div class="stack">
+      <span class="eyebrow">Foundation</span>
+      <h2 class="h2">Why we set posts on concrete piers</h2>
+      <p class="muted">Posts are never buried. Each one stands on a metal bracket whose welded rebar base is cast into a poured concrete pier.</p>
+      <ul class="checks">
+        {pierReasons.map((r) => <li>{r}</li>)}
+      </ul>
+    </div>
+    <div class="photo-pair">
+      <Photo src="/photos/auger-pier-hole.jpg" alt="Skid steer auger drilling a pier hole" ratio="4 / 3" />
+      <Photo src="/photos/post-bracket-pier.jpg" alt="Laminated column on a wet-set bracket in a concrete pier" ratio="4 / 3" />
+    </div>
+  </section>
+
+  <section class="band-white">
+    <div class="wrap section">
+      <div class="split split-top">
+        <div class="stack">
+          <span class="eyebrow">Standard on every building</span>
+          <h2 class="h2">The details you don't see in a cheaper bid</h2>
+        </div>
+        <ul class="checks">
+          {postFrameExtras.map((x) => <li>{x}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="options">
+    <div class="stack" style="margin-bottom: 32px;">
+      <h2 id="options" class="h2">Choose your options</h2>
+      <p class="lead">Everything here is in the 3D builder too. Pick what you like and we'll price it after the site visit.</p>
+    </div>
+    <div class="option-grid">
+      {postFrameOptions.map((o) => (
+        <div><h3>{o.title}</h3><p>{o.text}</p></div>
+      ))}
+    </div>
+
+    <div class="colors stack">
+      <h3 class="colors-title">Steel colors</h3>
+      <ul class="swatches">
+        {steelColors.map((c) => (
+          <li><span class="swatch" style={`background:${c.hex}`} aria-hidden="true"></span>{c.name}</li>
+        ))}
+      </ul>
+      <p class="small muted">Screen colors are close, not exact. We bring real steel samples to the site visit.</p>
+    </div>
+  </section>
+
+  <section class="band-white" aria-labelledby="recent">
+    <div class="wrap section">
+      <div class="section-head">
+        <h2 id="recent" class="h2">Recent post frame work</h2>
+        <p>New projects will show here from our Instagram.</p>
+      </div>
+      <div class="cols" style="--min: 220px; --gap: 12px; margin-top: 24px;">
+        <Photo src="/photos/shop-gable.jpg" alt="Gray steel shop with a dark wainscot" ratio="4 / 5" />
+        <Photo src="/photos/shop-framing-interior.jpg" alt="Inside a shop during framing: girts, trusses and corner bracing" ratio="4 / 5" />
+        <Photo src="/photos/shop-cupola.jpg" alt="Cupola with a weathervane on a steel roof" ratio="4 / 5" />
+        <Photo src="/photos/pole-barn-trusses.jpg" alt="Setting trusses on a pole barn in winter" ratio="4 / 5" />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Design your building in 3D"
+    text="Size, doors, porch, colors and options. Send it to us and Cameron will call to set up a site visit."
+    primaryHref="/design"
+    primaryLabel="Open the builder"
+  />
+</Base>
+
+<style>
+  .photo-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .colors { margin-top: 40px; --stack: 14px; }
+  .colors-title { font-size: 18px; letter-spacing: -0.01em; }
+  .swatches { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px 16px; }
+  .swatches li { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .swatch { width: 30px; height: 30px; border-radius: 6px; border: 1px solid rgba(0, 0, 0, 0.12); flex-shrink: 0; }
+</style>

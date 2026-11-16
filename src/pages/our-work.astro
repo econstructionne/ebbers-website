@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Photo from '../components/Photo.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site } from '../data/site';
+
+const filters = [
+  { key: 'all', label: 'All' },
+  { key: 'post-frame', label: 'Post frame' },
+  { key: 'deck', label: 'Decks' },
+  { key: 'remodel', label: 'Timber frame and remodels' },
+];
+
+// Starter photos from the photo drop; Instagram posts get added here in phase 5.
+const items = [
+  { type: 'post-frame', src: '/photos/shop-lawn.jpg', alt: 'Finished steel shop with three overhead doors' },
+  { type: 'deck', src: '/photos/deck-covered-railing.jpg', alt: 'Covered composite deck with black aluminum railing' },
+  { type: 'remodel', src: '/photos/barn-after-evening.jpg', alt: 'Remodeled barn with new red steel at sunset' },
+  { type: 'post-frame', src: '/photos/shop-two-tone.jpg', alt: 'Two-tone steel shop with large door openings' },
+  { type: 'deck', src: '/photos/deck-stairs.jpg', alt: 'Composite deck stairs with black aluminum railing' },
+  { type: 'deck', src: '/photos/cedar-deck-pergola.jpg', alt: 'Cedar deck with a pergola' },
+  { type: 'remodel', src: '/photos/barn-remodel-after.jpg', alt: 'Barn remodel with a new white roof and red steel' },
+  { type: 'post-frame', src: '/photos/pole-barn-trusses.jpg', alt: 'Pole barn framing with trusses going up' },
+  { type: 'deck', src: '/photos/deck-dusk.jpg', alt: 'Two-level deck with lights on at dusk' },
+];
+---
+<Base
+  title="Our Work"
+  description="Recent post frame buildings, decks, custom homes and barn remodels by Ebbers Construction in Southeast Nebraska."
+>
+  <PageIntro eyebrow="Our work" title="Recent projects">
+    <p>New projects show up here from our <a href={site.social.instagram} rel="noopener">Instagram</a>. Pick a type to narrow it down.</p>
+  </PageIntro>
+
+  <section class="wrap" style="padding-bottom: 88px;">
+    <div class="filters" role="group" aria-label="Filter projects">
+      {filters.map((f, i) => (
+        <button type="button" class="filter" data-filter={f.key} aria-pressed={i === 0 ? 'true' : 'false'}>{f.label}</button>
+      ))}
+    </div>
+    <ul class="work-grid">
+      {items.map((it) => (
+        <li data-type={it.type}><Photo src={it.src} alt={it.alt} ratio="1 / 1" /></li>
+      ))}
+    </ul>
+  </section>
+
+  <CtaBand title="Like what you see?" text="Tell us about your project and we'll set up a site visit." />
+</Base>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter');
+  const tiles = document.querySelectorAll<HTMLLIElement>('.work-grid li');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.filter;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      tiles.forEach((t) => { t.hidden = key !== 'all' && t.dataset.type !== key; });
+    });
+  });
+</script>
+
+<style>
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .filter {
+    font: inherit; font-size: 15px; font-weight: 500; min-height: 44px; padding: 10px 16px; cursor: pointer;
+    border: 1px solid var(--line-strong); border-radius: var(--radius-btn); background: #fff; color: var(--ink);
+  }
+  .filter[aria-pressed='true'] { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .work-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 12px; }
+</style>

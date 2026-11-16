@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { site } from '../data/site';
+// Placeholder until phase 2 brings the public 3D builder to this page.
+---
+<Base
+  title="Design Your Building"
+  description="Design your post frame building in 3D: size, doors, porch, colors and options, then send it to Ebbers Construction."
+  noindex
+>
+  <PageIntro eyebrow="Design your building" title="The 3D builder is almost here.">
+    <p>Soon you'll be able to design your shop, garage or pole barn right here: size, doors, porch, steel colors and options, all in 3D. Then send it to us with one tap.</p>
+    <p>Until then, call <a href={site.phoneHref}>{site.phone}</a> or use the project form.</p>
+    <div class="btn-row">
+      <a href="/start?service=post-frame#contact" class="btn btn-primary">Use the project form</a>
+      <a href="/post-frame" class="btn btn-outline">See how we build</a>
+    </div>
+  </PageIntro>
+  <div style="height: 64px;"></div>
+</Base>

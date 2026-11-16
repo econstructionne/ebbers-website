@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Photo from '../components/Photo.astro';
+import CtaBand from '../components/CtaBand.astro';
+---
+<Base
+  title="Custom Homes"
+  description="Custom homes built by Ebbers Construction, a small family-owned builder in Firth, Nebraska serving Southeast Nebraska."
+>
+  <PageIntro eyebrow="Custom homes" title="A home built around how you live.">
+    <p>One small crew that cares about the details, from the first walk of your lot to the final walkthrough. You'll always know what's next and what's in your price.</p>
+    <div class="btn-row">
+      <a href="/start?service=home" class="btn btn-primary">Plan your home</a>
+      <a href="/how-we-work" class="btn btn-outline">How we work</a>
+    </div>
+  </PageIntro>
+
+  <section class="wrap">
+    <Photo alt="finished custom home exterior" ratio="21 / 9" eager />
+  </section>
+
+  <section class="wrap section split split-top">
+    <div class="stack">
+      <span class="eyebrow">What to expect</span>
+      <h2 class="h2">Clear answers before anything gets built</h2>
+    </div>
+    <ul class="checks">
+      <li>A site visit to look at your lot, access, utilities and how the house should sit.</li>
+      <li>An interactive proposal where you choose options and see the price change as you go.</li>
+      <li>A customer portal with your proposal, change orders, invoices, plans, photos and messages in one place.</li>
+      <li>A builder who answers the phone and tells you plainly what's happening.</li>
+    </ul>
+  </section>
+
+  <section class="band-white">
+    <div class="wrap section">
+      <div class="section-head">
+        <h2 class="h2">Homes we've built</h2>
+        <p>Photos and project details to come.</p>
+      </div>
+      <div class="cols" style="--min: 280px; --gap: 16px; margin-top: 24px;">
+        <Photo alt="custom home project" ratio="4 / 3" />
+        <Photo alt="custom home interior detail" ratio="4 / 3" />
+        <Photo alt="custom home project" ratio="4 / 3" />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Thinking about building?" text="Tell us about your lot, plans and must-haves. The more we know, the better our first conversation." primaryHref="/start?service=home" primaryLabel="Plan your home" />
+</Base>

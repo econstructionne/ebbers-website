@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { site } from '../data/site';
+
+const services = [
+  { key: 'post-frame', title: 'Post frame building', text: 'Shop, garage, pole barn or ag building. Design it in 3D.', href: '/design' },
+  { key: 'deck', title: 'Deck', text: 'New deck or replacing an old one.', href: '#contact' },
+  { key: 'home', title: 'Custom home', text: 'Building a new home.', href: '#contact' },
+  { key: 'remodel', title: 'Timber frame or remodel', text: 'New timber frame barn or remodeling an old one.', href: '#contact' },
+  { key: 'other', title: 'Something else', text: 'Concrete, fencing, outdoor structures and more.', href: '#contact' },
+];
+---
+<Base
+  title="Start Your Project"
+  description="Tell Ebbers Construction about your post frame building, deck, custom home or remodel. Your details go straight to Cameron for a free quote."
+>
+  <PageIntro eyebrow="Start your project" title="Tell us what you're planning.">
+    <p>Pick the kind of project. The more you can tell us up front, the more accurate your first quote will be. Rather talk? Call <a href={site.phoneHref}>{site.phone}</a>.</p>
+  </PageIntro>
+
+  <section class="wrap" aria-label="Project types">
+    <ul class="services">
+      {services.map((s) => (
+        <li>
+          <a href={s.href} class="service-card" data-service={s.key}>
+            <strong>{s.title}</strong>
+            <span>{s.text}</span>
+            <span class="go" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="small muted note">Step-by-step planners for decks, homes and remodels are coming next. For now, use the short form below.</p>
+  </section>
+
+  <section id="contact" class="wrap section">
+    <div class="card form-card split split-top">
+      <div class="stack">
+        <h2 class="h2">Quick project form</h2>
+        <p class="muted">Your details go straight to Cameron, who will call you back to talk it through and set up a site visit.</p>
+        <p class="muted small">{site.hours}</p>
+      </div>
+      <form class="quick-form" id="quick-form" novalidate>
+        <label class="field">Your name<input type="text" name="name" autocomplete="name" required /></label>
+        <label class="field">Phone<input type="tel" name="phone" autocomplete="tel" /></label>
+        <label class="field">Email<input type="email" name="email" autocomplete="email" /></label>
+        <label class="field">Project type
+          <select name="service" id="service-select">
+            {services.map((s) => <option value={s.key}>{s.title}</option>)}
+          </select>
+        </label>
+        <label class="field wide">Where is the project? <span class="hint">Address or nearest town</span><input type="text" name="site" autocomplete="street-address" /></label>
+        <label class="field wide">Tell us about it<textarea name="notes" rows="4"></textarea></label>
+        <div class="wide stack" style="--stack: 10px;">
+          <button type="submit" class="btn btn-primary">Send to Ebbers</button>
+          <p class="small muted" id="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Preselect the project type from ?service=deck etc.
+  const params = new URLSearchParams(location.search);
+  const service = params.get('service');
+  const select = document.getElementById('service-select') as HTMLSelectElement | null;
+  if (service && select && [...select.options].some((o) => o.value === service)) select.value = service;
+
+  // Sending is not connected yet: the portal's website-lead function is built in phase 4.
+  const form = document.getElementById('quick-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (status) status.textContent = 'Online sending is still being connected. Please call 402-580-5977 and we\'ll take your details by phone.';
+  });
+</script>
+
+<style>
+  .services { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px; }
+  .service-card {
+    height: 100%; display: flex; flex-direction: column; gap: 6px; padding: 22px; min-height: 150px;
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius-card); color: var(--ink); text-decoration: none;
+    transition: border-color .15s;
+  }
+  .service-card:hover { border-color: var(--green); color: var(--ink); }
+  .service-card strong { font-size: 18px; }
+  .service-card span { font-size: 15px; color: var(--ink-2); }
+  .service-card .go { margin-top: auto; font-size: 20px; color: var(--green); }
+  .note { margin-top: 16px; }
+  .form-card { padding: 36px; }
+  .quick-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; }
+  .wide { grid-column: 1 / -1; }
+  .quick-form .btn { justify-self: start; align-self: flex-start; }
+  @media (max-width: 640px) { .form-card { padding: 22px; } }
+</style>
