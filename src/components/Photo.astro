@@ -1,0 +1,32 @@
+---
+/**
+ * A job photo. Until Cameron picks real photos, it shows a labelled placeholder
+ * describing the shot that belongs there.
+ */
+interface Props {
+  /** Path under /public, e.g. /photos/shop-1.jpg. Leave empty for a placeholder. */
+  src?: string;
+  alt: string;
+  /** CSS aspect ratio, e.g. "3 / 2". */
+  ratio?: string;
+  caption?: string;
+  eager?: boolean;
+  class?: string;
+}
+const { src, alt, ratio = '3 / 2', caption, eager = false, class: cls } = Astro.props;
+---
+<figure class:list={['photo-figure', cls]}>
+  <div class="photo" style={`--ratio: ${ratio}`}>
+    {src ? (
+      <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    ) : (
+      <span class="photo-label">Photo to come: {alt}</span>
+    )}
+  </div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .photo-figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  figcaption { font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+</style>

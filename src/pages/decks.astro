@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import SectionDrawing from '../components/SectionDrawing.astro';
+import DeckSectionSvg from '../components/DeckSectionSvg.astro';
+import Photo from '../components/Photo.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { deckParts } from '../data/build';
+
+const projects = [
+  {
+    alt: 'Voyage Costa deck with black picture-frame border and drink rail',
+    title: 'Voyage Costa with a black border',
+    text: 'Deckorators Voyage decking in Costa with a black picture-frame border, 36 in textured black Westbury aluminum railing and a matching deck-board drink rail.',
+  },
+  {
+    alt: 'Summit Boulder deck with 42 in railing',
+    title: 'Summit Boulder, 42 in railing',
+    text: 'Deckorators Summit in Boulder. We raised the main railing to 42 in instead of the usual 36 in for extra safety and a more solid feel.',
+  },
+  {
+    alt: 'Voyage Costa deck with bronze railing and slim posts',
+    title: 'Bronze railing, slim posts',
+    text: 'Voyage in Costa with a bronze 36 in Westbury railing. We usually use 4 in posts for strength; here 2.5 in posts give a slimmer, modern look.',
+  },
+];
+---
+<Base
+  title="Decks"
+  description="Custom decks from Ebbers Construction in Southeast Nebraska: TrueFrame joists at 12 in on center, flashed ledgers, Deckorators composite decking, picture-frame borders and Westbury aluminum railing."
+>
+  <PageIntro eyebrow="Decks" title="Outdoor living, built to endure.">
+    <p>We overbuild on purpose. Tighter framing, better lumber and careful flashing mean a deck that feels solid underfoot and stays flat for years.</p>
+    <div class="btn-row">
+      <a href="/start?service=deck" class="btn btn-primary">Plan your deck</a>
+      <a href="#projects" class="btn btn-outline">See recent decks</a>
+    </div>
+  </PageIntro>
+
+  <section class="wrap" aria-labelledby="deck-section">
+    <h2 id="deck-section" class="sr-only">Deck section, part by part</h2>
+    <SectionDrawing label="DECK SECTION · NOT TO SCALE" parts={deckParts}>
+      <DeckSectionSvg />
+    </SectionDrawing>
+  </section>
+
+  <section class="wrap section split split-top">
+    <div class="stack">
+      <span class="eyebrow">Framing</span>
+      <h2 class="h2">Joists every 12 inches, on every deck</h2>
+      <p class="muted">Many decks are framed at 16 in. We frame every deck at 12 in on center, whatever the decking. It carries more load, feels more solid, and cuts down on board movement, warping and waviness.</p>
+      <p class="muted">Most of our framing is ProWood TrueFrame instead of standard treated lumber. It's #1 grade, kiln-dried and cut to a consistent size, so it stays straight. We think it's well worth it.</p>
+    </div>
+    <Photo alt="deck framing with joist tape before decking goes on" ratio="4 / 3" />
+  </section>
+
+  <section class="band-white">
+    <div class="wrap section">
+      <div class="stack" style="margin-bottom: 32px;">
+        <h2 class="h2">Decking and railing details</h2>
+        <p class="lead">The finish details are where a deck looks custom or not.</p>
+      </div>
+      <div class="option-grid">
+        <div><h3>Picture-frame and breaker boards</h3><p>Deckorators Picture Frame boards can border the deck or run through it as breaker boards, so there are no butt seams in the field.</p></div>
+        <div><h3>Stairs that match</h3><p>Every tread is mitered and the layout is planned to hide end grain. Treads are pre-assembled with pocket screws so the miters stay tight.</p></div>
+        <div><h3>Mixed board widths</h3><p>Some designs mix 7.25 in and 5.5 in boards for a more interesting surface.</p></div>
+        <div><h3>Aluminum railing</h3><p>Powder-coated Westbury aluminum in black or bronze. It won't rot or warp and needs almost no care.</p></div>
+        <div><h3>Drink rail</h3><p>A deck board across the top of the railing gives you a place for drinks, leaning and taking in the view.</p></div>
+        <div><h3>Decking lines we use</h3><p>Deckorators Voyage and Summit composite are our go-to lines, in a range of colors.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="wrap section" aria-labelledby="recent-decks">
+    <div class="section-head">
+      <h2 id="recent-decks" class="h2">Recent decks</h2>
+      <p>New projects will also show here from our Instagram.</p>
+    </div>
+    <div class="cols" style="--min: 300px; --gap: 28px; margin-top: 28px;">
+      {projects.map((p) => (
+        <article class="stack" style="--stack: 12px;">
+          <Photo alt={p.alt} ratio="4 / 3" />
+          <h3 class="project-title">{p.title}</h3>
+          <p class="small muted">{p.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <CtaBand title="Plan your deck" text="Tell us the size, height and the materials you like. We'll come out, measure and send you an interactive proposal." primaryHref="/start?service=deck" primaryLabel="Plan your deck" />
+</Base>
+
+<style>
+  .project-title { font-size: 19px; letter-spacing: -0.01em; }
+</style>

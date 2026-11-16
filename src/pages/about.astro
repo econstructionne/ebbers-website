@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Photo from '../components/Photo.astro';
+import CtaBand from '../components/CtaBand.astro';
+---
+<Base
+  title="About"
+  description="Ebbers Construction is a small, family-owned builder in Firth, Nebraska, owned by Cameron and Paul. Integrity, reliability and lasting relationships."
+>
+  <PageIntro eyebrow="About us" title="A small family company that builds it right.">
+    <p>Ebbers Construction is family owned and based in Firth, Nebraska. We build post frame buildings, decks, custom homes and timber frame barns across Southeast Nebraska.</p>
+  </PageIntro>
+
+  <section class="wrap">
+    <Photo alt="Cameron and Paul on a job site" ratio="21 / 9" eager />
+  </section>
+
+  <section class="wrap section split split-top">
+    <div class="stack">
+      <h2 class="h2">Why we may not be the lowest bid</h2>
+      <p class="muted">We focus on craftsmanship and attention to detail. We listen, we communicate clearly, and we don't cut corners to win a job. That shows up in the framing you'll never see once the steel is on, and in how your project feels years later.</p>
+    </div>
+    <div class="values">
+      <div><h3>Integrity</h3><p class="muted">We tell you plainly what's in your price and what isn't.</p></div>
+      <div><h3>Reliability</h3><p class="muted">We show up when we say we will and keep you updated.</p></div>
+      <div><h3>Lasting relationships</h3><p class="muted">Most of our work comes from referrals, and we'd like yours too.</p></div>
+    </div>
+  </section>
+
+  <section class="band-white">
+    <div class="wrap section">
+      <div class="section-head"><h2 class="h2">The owners</h2></div>
+      <div class="cols" style="--min: 300px; --gap: 32px; margin-top: 28px;">
+        <article class="stack" style="--stack: 12px;">
+          <Photo alt="portrait of Cameron" ratio="4 / 3" />
+          <h3 class="owner">Cameron</h3>
+          <p class="muted small">Bio to come.</p>
+        </article>
+        <article class="stack" style="--stack: 12px;">
+          <Photo alt="portrait of Paul" ratio="4 / 3" />
+          <h3 class="owner">Paul</h3>
+          <p class="muted small">Bio to come.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Let's build something great." text="Tell us about your project, or give us a call." />
+</Base>
+
+<style>
+  .values { display: flex; flex-direction: column; border-top: 2px solid var(--ink); }
+  .values > div { padding: 18px 0; border-bottom: 1px solid var(--line-strong); display: flex; flex-direction: column; gap: 4px; }
+  .values h3, .owner { font-size: 19px; letter-spacing: -0.01em; }
+</style>

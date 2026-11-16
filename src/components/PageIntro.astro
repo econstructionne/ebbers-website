@@ -1,0 +1,23 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+}
+const { eyebrow, title } = Astro.props;
+---
+<section class="wrap intro">
+  <div class="stack">
+    <span class="eyebrow">{eyebrow}</span>
+    <h1 class="display">{title}</h1>
+  </div>
+  <div class="lead intro-text"><slot /></div>
+</section>
+
+<style>
+  .intro {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+    gap: 24px 56px; align-items: end; padding-top: 72px; padding-bottom: 48px;
+  }
+  .intro-text { display: flex; flex-direction: column; gap: 14px; }
+  @media (max-width: 640px) { .intro { padding-top: 48px; padding-bottom: 32px; } }
+</style>

@@ -1,0 +1,54 @@
+---
+import { site, nav } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer band-night">
+  <div class="wrap footer-inner">
+    <div class="stack footer-brand">
+      <img src="/brand/logo-white.svg" alt={site.name} width="150" height="95" />
+      <p class="small">{site.tagline}.</p>
+      <p class="small dim">Based in {site.town}. Building across {site.serviceArea}.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="stack">
+        <h2 class="footer-h">Contact</h2>
+        <a href={site.phoneHref}>{site.phone}</a>
+        {site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}
+        <span class="dim">{site.hours}</span>
+        <a href="/start">Start your project</a>
+      </div>
+      <div class="stack">
+        <h2 class="footer-h">Explore</h2>
+        {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      </div>
+      <div class="stack">
+        <h2 class="footer-h">Follow</h2>
+        <a href={site.social.facebook} rel="noopener">Facebook</a>
+        <a href={site.social.instagram} rel="noopener">Instagram</a>
+        <a href={site.social.yelp} rel="noopener">Yelp</a>
+      </div>
+      <div class="stack">
+        <h2 class="footer-h">Portals</h2>
+        <a href={site.portal.customerLogin}>Customer login</a>
+        <a href={site.portal.employee}>Employee portal</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <span>© {year} {site.name}</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer { font-size: 15px; }
+  .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; padding-top: 56px; padding-bottom: 40px; }
+  .footer-brand { --stack: 12px; max-width: 300px; }
+  .footer-brand img { height: 64px; width: auto; object-fit: contain; align-self: flex-start; }
+  .footer-cols { display: flex; flex-wrap: wrap; gap: 32px 56px; }
+  .footer-cols .stack { --stack: 10px; }
+  .footer-h { font-size: 14px; letter-spacing: 0.02em; color: #fff; font-weight: 600; }
+  .site-footer a { color: var(--stone); text-decoration: none; }
+  .site-footer a:hover { color: #fff; text-decoration: underline; }
+  .dim { color: #b9b6ac; }
+  .footer-base { border-top: 1px solid #3a3d36; padding-top: 18px; padding-bottom: 24px; font-size: 13px; color: #b9b6ac; }
+</style>

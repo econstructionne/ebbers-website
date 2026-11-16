@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const steps = [
+  { title: 'Design or call', text: 'Design your building in our 3D builder, fill out a project planner, or just call for a free quote.' },
+  { title: 'Site visit', text: 'Cameron meets you at the site, looks at the land and talks through what you want.' },
+  { title: 'Interactive proposal', text: 'You get a link to a proposal with photos, specs and options you can tick. The price updates as you go.' },
+  { title: 'Sign online', text: 'Sign with your finger or mouse. A copy and your deposit invoice arrive by email.' },
+  { title: 'Project details', text: 'A short form for gate codes, parking, working hours and who to call on job day.' },
+  { title: 'Permits and ordering', text: 'Usually 1 to 3 weeks. We check the site, pull permits and order materials once the deposit clears.' },
+  { title: 'Build date', text: 'Usually about 4 to 8 weeks out. We call you with a start date.' },
+  { title: 'Construction', text: 'Follow progress and message us any time from your customer portal.' },
+  { title: 'Final walkthrough', text: 'We walk the finished project with you, then send the final invoice.' },
+];
+---
+<Base
+  title="How We Work"
+  description="How a project with Ebbers Construction works, from design or a phone call through the site visit, interactive proposal, online signing, construction and final walkthrough."
+>
+  <PageIntro eyebrow="How we work" title="You always know what's next.">
+    <p>Nine clear steps from your first call to the final walkthrough. After you sign, everything about your project lives in your own customer portal.</p>
+  </PageIntro>
+
+  <section class="wrap" aria-label="Project steps">
+    <ol class="timeline">
+      {steps.map((s, i) => (
+        <li>
+          <span class="mono t-num">{String(i + 1).padStart(2, '0')}</span>
+          <div class="stack" style="--stack: 4px;">
+            <h2 class="t-title">{s.title}</h2>
+            <p class="muted">{s.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="band-white">
+    <div class="wrap section split split-top">
+      <div class="stack">
+        <span class="eyebrow">Your proposal</span>
+        <h2 class="h2">A proposal you can actually use</h2>
+        <p class="muted">Your proposal isn't a PDF full of line items. It's laid out by the job, then the options, the way you'd talk about it.</p>
+      </div>
+      <ul class="checks">
+        <li>Choose between options, like siding type or floor, and see the price change right away.</li>
+        <li>Pick steel colors from color chips.</li>
+        <li>Photos and spec sheets attached to the options they belong to.</li>
+        <li>For post frame buildings, a 3D model that updates as you choose options.</li>
+        <li>Sign once, from your phone or computer.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap section split split-top">
+    <div class="stack">
+      <span class="eyebrow">Customer portal</span>
+      <h2 class="h2">Your whole project in one place</h2>
+      <p class="muted">You log in with a link we email you, no password to remember. You only ever see your own project.</p>
+    </div>
+    <ul class="checks">
+      <li>Proposals, change orders and invoices</li>
+      <li>Plans and progress photos</li>
+      <li>A to-do list for things like color picks and job-day details</li>
+      <li>Messages with our office</li>
+    </ul>
+  </section>
+
+  <CtaBand title="Start with your project details" text="Design in 3D or fill out a project planner. It goes straight to Cameron." />
+</Base>
+
+<style>
+  .timeline { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+  .timeline li { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--line-strong); }
+  .t-num { font-size: 22px; color: var(--green); font-weight: 500; }
+  .t-title { font-size: 20px; letter-spacing: -0.01em; }
+  @media (min-width: 900px) {
+    .timeline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 40px; }
+  }
+</style>

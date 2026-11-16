@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Photo from '../components/Photo.astro';
+import CtaBand from '../components/CtaBand.astro';
+---
+<Base
+  title="Timber Frame Barns and Remodels"
+  description="Timber frame barns, old barn remodels and smaller projects by Ebbers Construction in Southeast Nebraska."
+>
+  <PageIntro eyebrow="Timber frame and remodels" title="Barns with character, old and new.">
+    <p>We build new timber frame barns and bring old ones back to life. We also take on smaller projects for our customers, from concrete and fencing to outdoor structures.</p>
+    <div class="btn-row">
+      <a href="/start?service=remodel" class="btn btn-primary">Plan your project</a>
+      <a href="/our-work" class="btn btn-outline">See our work</a>
+    </div>
+  </PageIntro>
+
+  <section class="wrap section split split-top" style="padding-top: 24px;">
+    <div class="photo-pair">
+      <Photo alt="old barn before the remodel" ratio="4 / 5" caption="Before" />
+      <Photo alt="the same barn after the remodel, with custom soffit" ratio="4 / 5" caption="After" />
+    </div>
+    <div class="stack">
+      <span class="eyebrow">Featured project</span>
+      <h2 class="h2">An old barn, remodeled</h2>
+      <p class="muted">This barn got a full remodel, including soffit we made for it on site. Project details to come.</p>
+    </div>
+  </section>
+
+  <section class="band-white">
+    <div class="wrap section">
+      <div class="stack" style="margin-bottom: 28px;">
+        <h2 class="h2">Smaller projects</h2>
+        <p class="lead">Already working with us, or need something done right? Ask about these too.</p>
+      </div>
+      <div class="option-grid">
+        <div><h3>Concrete</h3><p>Ask us about concrete work on your property.</p></div>
+        <div><h3>Fencing, hardscape and landscape</h3><p>Fences and outdoor finishing work.</p></div>
+        <div><h3>Outdoor structures and demolition</h3><p>Smaller builds, and taking down what needs to go.</p></div>
+        <div><h3>Doors, windows and painting</h3><p>Replacements and refreshes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Have an old barn or a new idea?" text="Send us a few photos and tell us what you'd like to change." primaryHref="/start?service=remodel" primaryLabel="Plan your project" />
+</Base>
+
+<style>
+  .photo-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+</style>
