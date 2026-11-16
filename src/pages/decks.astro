@@ -9,19 +9,22 @@ import { deckParts } from '../data/build';
 
 const projects = [
   {
-    alt: 'Voyage Costa deck with black picture-frame border and drink rail',
-    title: 'Voyage Costa with a black border',
-    text: 'Deckorators Voyage decking in Costa with a black picture-frame border, 36 in textured black Westbury aluminum railing and a matching deck-board drink rail.',
+    src: '/photos/deck-covered-border.jpg',
+    alt: 'Covered composite deck with a black picture-frame border and black aluminum railing',
+    title: 'Covered deck with a black border',
+    text: 'Composite decking with a black picture-frame border and breaker boards, black aluminum railing, and a covered section under the upper level.',
   },
   {
-    alt: 'Summit Boulder deck with 42 in railing',
-    title: 'Summit Boulder, 42 in railing',
-    text: 'Deckorators Summit in Boulder. We raised the main railing to 42 in instead of the usual 36 in for extra safety and a more solid feel.',
+    src: '/photos/cedar-deck-pergola-wide.jpg',
+    alt: 'Cedar deck with herringbone decking, cedar skirting and a pergola',
+    title: 'Cedar deck with a pergola',
+    text: 'Cedar decking laid in a herringbone pattern, cedar skirting, cedar posts with black balusters and a pergola over the seating area.',
   },
   {
-    alt: 'Voyage Costa deck with bronze railing and slim posts',
-    title: 'Bronze railing, slim posts',
-    text: 'Voyage in Costa with a bronze 36 in Westbury railing. We usually use 4 in posts for strength; here 2.5 in posts give a slimmer, modern look.',
+    src: '/photos/deck-two-level.jpg',
+    alt: 'Two-level composite deck with a long stair run and black aluminum railing',
+    title: 'Two-level deck with stairs',
+    text: 'An upper deck and stair run on all-new framing, with composite treads and black aluminum railing.',
   },
 ];
 ---
@@ -51,7 +54,7 @@ const projects = [
       <p class="muted">Many decks are framed at 16 in. We frame every deck at 12 in on center, whatever the decking. It carries more load, feels more solid, and cuts down on board movement, warping and waviness.</p>
       <p class="muted">Most of our framing is ProWood TrueFrame instead of standard treated lumber. It's #1 grade, kiln-dried and cut to a consistent size, so it stays straight. We think it's well worth it.</p>
     </div>
-    <Photo alt="deck framing with joist tape before decking goes on" ratio="4 / 3" />
+    <Photo src="/photos/deck-trueframe-joists.jpg" alt="ProWood TrueFrame kiln-dried joists on a new deck frame" ratio="4 / 3" />
   </section>
 
   <section class="band-white">
@@ -79,7 +82,7 @@ const projects = [
     <div class="cols" style="--min: 300px; --gap: 28px; margin-top: 28px;">
       {projects.map((p) => (
         <article class="stack" style="--stack: 12px;">
-          <Photo alt={p.alt} ratio="4 / 3" />
+          <Photo src={p.src} alt={p.alt} ratio="4 / 3" />
           <h3 class="project-title">{p.title}</h3>
           <p class="small muted">{p.text}</p>
         </article>

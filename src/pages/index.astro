@@ -23,9 +23,7 @@ const steps = [
   description="Family-owned builder in Firth, Nebraska. Post frame buildings, decks, custom homes, timber frame barns and remodels across Southeast Nebraska, built to a higher standard."
 >
   <section class="hero">
-    <div class="hero-photo" role="img" aria-label="Photo to come: a finished Ebbers shop at evening light">
-      <span class="hero-placeholder">Photo to come: a finished Ebbers shop, eave side, evening light</span>
-    </div>
+    <img class="hero-photo" src="/photos/hero-shop-porch.jpg" alt="Dark steel post frame building with a covered porch, built by Ebbers Construction" fetchpriority="high" />
     <div class="hero-shade">
       <div class="wrap hero-inner">
         <div class="stack hero-copy">
@@ -58,7 +56,7 @@ const steps = [
     </div>
 
     <article class="service split">
-      <Photo alt="shop with a porch and stone wainscot" />
+      <Photo src="/photos/shop-lawn.jpg" alt="Finished steel shop with three overhead doors" />
       <div class="stack">
         <span class="eyebrow">01 · Post frame</span>
         <h3 class="h3">Shops, garages and pole barns</h3>
@@ -88,11 +86,11 @@ const steps = [
           <a class="text-link" href="/start?service=deck">Plan your deck</a>
         </div>
       </div>
-      <Photo alt="Voyage Costa deck with a black picture-frame border and drink rail" />
+      <Photo src="/photos/deck-dusk.jpg" alt="Two-level deck with black aluminum railing, lit up at dusk" />
     </article>
 
     <article class="service split">
-      <Photo alt="custom home or timber frame barn" />
+      <Photo src="/photos/barn-remodel-after.jpg" alt="Old barn brought back with new red steel, a white roof and new overhead doors" />
       <div class="stack">
         <span class="eyebrow">03 · Homes, timber frame and remodels</span>
         <h3 class="h3">Custom homes and barns with character</h3>
@@ -137,8 +135,7 @@ const steps = [
 
 <style>
   .hero { position: relative; min-height: min(78vh, 680px); display: flex; align-items: flex-end; background: #3a3d36; color: #fff; overflow: hidden; }
-  .hero-photo { position: absolute; inset: 0; display: flex; align-items: flex-start; justify-content: center; padding-top: 48px; }
-  .hero-placeholder { color: #b9b6ac; font-size: 15px; padding: 24px; text-align: center; }
+  .hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
   .hero-shade { position: relative; width: 100%; background: linear-gradient(to top, rgba(20, 22, 19, 0.9), rgba(20, 22, 19, 0)); }
   .hero-inner { padding-top: 180px; padding-bottom: 64px; }
   .hero-copy { max-width: 700px; --stack: 20px; }

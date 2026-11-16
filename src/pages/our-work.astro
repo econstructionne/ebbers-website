@@ -9,20 +9,20 @@ const filters = [
   { key: 'all', label: 'All' },
   { key: 'post-frame', label: 'Post frame' },
   { key: 'deck', label: 'Decks' },
-  { key: 'home', label: 'Homes' },
   { key: 'remodel', label: 'Timber frame and remodels' },
 ];
 
-// Placeholder grid until Instagram and chosen job photos are connected (phase 5).
+// Starter photos from the photo drop; Instagram posts get added here in phase 5.
 const items = [
-  { type: 'post-frame', alt: 'post frame shop' },
-  { type: 'deck', alt: 'composite deck' },
-  { type: 'post-frame', alt: 'garage with porch' },
-  { type: 'home', alt: 'custom home' },
-  { type: 'deck', alt: 'deck stairs with mitered treads' },
-  { type: 'remodel', alt: 'barn remodel' },
-  { type: 'post-frame', alt: 'pole barn framing' },
-  { type: 'deck', alt: 'deck with drink rail' },
+  { type: 'post-frame', src: '/photos/shop-lawn.jpg', alt: 'Finished steel shop with three overhead doors' },
+  { type: 'deck', src: '/photos/deck-covered-railing.jpg', alt: 'Covered composite deck with black aluminum railing' },
+  { type: 'remodel', src: '/photos/barn-after-evening.jpg', alt: 'Remodeled barn with new red steel at sunset' },
+  { type: 'post-frame', src: '/photos/shop-two-tone.jpg', alt: 'Two-tone steel shop with large door openings' },
+  { type: 'deck', src: '/photos/deck-stairs.jpg', alt: 'Composite deck stairs with black aluminum railing' },
+  { type: 'deck', src: '/photos/cedar-deck-pergola.jpg', alt: 'Cedar deck with a pergola' },
+  { type: 'remodel', src: '/photos/barn-remodel-after.jpg', alt: 'Barn remodel with a new white roof and red steel' },
+  { type: 'post-frame', src: '/photos/pole-barn-trusses.jpg', alt: 'Pole barn framing with trusses going up' },
+  { type: 'deck', src: '/photos/deck-dusk.jpg', alt: 'Two-level deck with lights on at dusk' },
 ];
 ---
 <Base
@@ -41,7 +41,7 @@ const items = [
     </div>
     <ul class="work-grid">
       {items.map((it) => (
-        <li data-type={it.type}><Photo alt={it.alt} ratio="1 / 1" /></li>
+        <li data-type={it.type}><Photo src={it.src} alt={it.alt} ratio="1 / 1" /></li>
       ))}
     </ul>
   </section>
